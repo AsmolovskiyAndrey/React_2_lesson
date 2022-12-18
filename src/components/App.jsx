@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Form } from './Form/Form';
 import { Counter } from './Counter/Counter';
 import { Dropdown } from './Dropdown/Dropdown';
 import { ColorPicker } from './ColorPicker/ColorPicker';
@@ -25,6 +26,10 @@ class App extends Component {
     }));
   };
 
+  formSubmitHandler = data => {
+    console.log(data);
+  };
+
   render() {
     const { todos } = this.state;
 
@@ -36,13 +41,13 @@ class App extends Component {
 
     return (
       <>
+        <Form outOnSubmit={this.formSubmitHandler} />
         <h1>Состояние компонента</h1>
 
         <div>
           <p>Общее кол-во: {totalTodoCount}</p>
           <p>Кол-во выполненных: {completedTodoCount}</p>
         </div>
-
         <ToDoList todos={todos} onDeleteTodo={this.deleteTodo} />
         <Counter initialValue={10} />
         <Dropdown />
