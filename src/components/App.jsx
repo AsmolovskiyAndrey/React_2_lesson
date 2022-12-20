@@ -7,6 +7,7 @@ import { Dropdown } from './Dropdown/Dropdown';
 import { ColorPicker } from './ColorPicker/ColorPicker';
 import TodoList from './ToDoList';
 import Filter from './Filter/Filter';
+import { LoginForm } from './LoginForm/LoginForm';
 import initialTodos from './Data/todos.json';
 
 const colorPickerOptions = [
@@ -97,6 +98,7 @@ class App extends Component {
 
     return (
       <>
+        <LoginForm />
         <TodoEditor onSubmit={this.addTodo} />
         <Filter value={filter} onChange={this.changeFilter} />
         <Form outOnSubmit={this.formSubmitHandler} />
