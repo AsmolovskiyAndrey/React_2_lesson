@@ -32,7 +32,12 @@ export class Form extends Component {
   };
 
   resetForm = () => {
-    this.setState({ name: '', phone: '', experience: 'junior' });
+    this.setState({
+      name: '',
+      phone: '',
+      experience: 'junior',
+      license: false,
+    });
   };
 
   render() {
@@ -91,7 +96,6 @@ export class Form extends Component {
           Senior
         </label>
 
-        <br />
         <label>
           <input
             type="checkbox"
