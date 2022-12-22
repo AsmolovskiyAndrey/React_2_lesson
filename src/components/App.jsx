@@ -24,7 +24,25 @@ class App extends Component {
   state = {
     todos: initialTodos,
     filter: '',
+    showModal: false,
   };
+
+  componentDidMount() {
+    // console.log('App componentDidMount');
+    // const todos = localStorage.getItem('todos');
+    // const parsedTodos = JSON.parse(todos);
+    // if (parsedTodos) {
+    //   this.setState({ todos: parsedTodos });
+    // }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    //   console.log('App componentDidUpdate');
+    //   if (this.state.todos !== prevState.todos) {
+    //     console.log('Обновлено поле TODOS');
+    //     localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    //   }
+  }
 
   addTodo = text => {
     // console.log(text);
@@ -91,35 +109,41 @@ class App extends Component {
     );
   };
 
-  componentDidMount() {
-    console.log('App componentDidMount');
-
-    const todos = localStorage.getItem('todos');
-    const parsedTodos = JSON.parse(todos);
-
-    if (parsedTodos) {
-      this.setState({ todos: parsedTodos });
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log('App componentDidUpdate');
-    if (this.state.todos !== prevState.todos) {
-      console.log('Обновлено поле TODOS');
-
-      localStorage.setItem('todos', JSON.stringify(this.state.todos));
-    }
-  }
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
 
   render() {
-    const { todos, filter } = this.state;
+    const { todos, filter, showModal } = this.state;
     const totalTodoCount = todos.length;
     const completedTodoCount = this.calculateCompletedTodos();
     const visibleTodos = this.getVisibleTodos();
 
     return (
       <>
-        <Modal />
+        <button type="button" onClick={this.toggleModal}>
+          Открыть модалку
+        </button>
+
+        {showModal && (
+          <Modal closeModal={this.toggleModal}>
+            <h1>Привет это контент модалки как children</h1>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi
+              officia odit dolor eum placeat adipisci obcaecati aliquam eveniet
+              repellendus reiciendis dolorum saepe pariatur alias cum dolores,
+              natus culpa. Eum culpa cumque reiciendis quo, alias quae incidunt
+              nesciunt vel necessitatibus unde saepe eligendi rem dolore modi
+              iure asperiores sit minima laudantium.
+            </p>
+            <button type="button" onClick={this.toggleModal}>
+              Закрыть модалку
+            </button>
+          </Modal>
+        )}
+
         <LoginForm />
         <TodoEditor onSubmit={this.addTodo} />
         <Filter value={filter} onChange={this.changeFilter} />
