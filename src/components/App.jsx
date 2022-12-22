@@ -9,6 +9,7 @@ import TodoList from './ToDoList';
 import Filter from './Filter/Filter';
 import { LoginForm } from './LoginForm/LoginForm';
 import initialTodos from './Data/todos.json';
+import Modal from './Modal';
 
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
@@ -92,6 +93,13 @@ class App extends Component {
 
   componentDidMount() {
     console.log('App componentDidMount');
+
+    const todos = localStorage.getItem('todos');
+    const parsedTodos = JSON.parse(todos);
+
+    if (parsedTodos) {
+      this.setState({ todos: parsedTodos });
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -111,6 +119,7 @@ class App extends Component {
 
     return (
       <>
+        <Modal />
         <LoginForm />
         <TodoEditor onSubmit={this.addTodo} />
         <Filter value={filter} onChange={this.changeFilter} />
