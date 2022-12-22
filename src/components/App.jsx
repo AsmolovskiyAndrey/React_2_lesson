@@ -90,6 +90,19 @@ class App extends Component {
     );
   };
 
+  componentDidMount() {
+    console.log('App componentDidMount');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('App componentDidUpdate');
+    if (this.state.todos !== prevState.todos) {
+      console.log('Обновлено поле TODOS');
+
+      localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    }
+  }
+
   render() {
     const { todos, filter } = this.state;
     const totalTodoCount = todos.length;
