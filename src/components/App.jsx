@@ -5,8 +5,7 @@ import { Form } from './Form/Form';
 import { Counter } from './Counter/Counter';
 import { Dropdown } from './Dropdown/Dropdown';
 import { ColorPicker } from './ColorPicker/ColorPicker';
-// import TodoList from './ToDoList';
-import { TodoList } from './ToDoList/TodoList';
+// import { TodoList } from './ToDoList/TodoList';
 import Filter from './Filter/Filter';
 import { LoginForm } from './LoginForm/LoginForm';
 import initialTodos from './Data/todos.json';
@@ -175,11 +174,11 @@ class App extends Component {
           <p>Общее кол-во: {totalTodoCount}</p>
           <p>Кол-во выполненных: {completedTodoCount}</p>
         </div>
-        <TodoList
+        {/* <TodoList
           todos={visibleTodos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
-        />
+        /> */}
         <Counter initialValue={10} />
         <Dropdown />
         <ColorPicker options={colorPickerOptions} />
