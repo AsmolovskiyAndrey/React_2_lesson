@@ -5,7 +5,7 @@ import { Form } from './Form/Form';
 import { Counter } from './Counter/Counter';
 import { Dropdown } from './Dropdown/Dropdown';
 import { ColorPicker } from './ColorPicker/ColorPicker';
-// import { TodoList } from './ToDoList/TodoList';
+import { TodoList } from './ToDoList/TodoList';
 import Filter from './Filter/Filter';
 import { LoginForm } from './LoginForm/LoginForm';
 import initialTodos from './Data/todos.json';
@@ -131,7 +131,7 @@ class App extends Component {
     const { todos, filter, showModal, showClock } = this.state;
     const totalTodoCount = todos.length;
     const completedTodoCount = this.calculateCompletedTodos();
-    // const visibleTodos = this.getVisibleTodos();
+    const visibleTodos = this.getVisibleTodos();
 
     return (
       <>
@@ -174,11 +174,11 @@ class App extends Component {
           <p>Общее кол-во: {totalTodoCount}</p>
           <p>Кол-во выполненных: {completedTodoCount}</p>
         </div>
-        {/* <TodoList
+        <TodoList
           todos={visibleTodos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
-        /> */}
+        />
         <Counter initialValue={10} />
         <Dropdown />
         <ColorPicker options={colorPickerOptions} />
