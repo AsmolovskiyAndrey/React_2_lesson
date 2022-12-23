@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import './TodoList.scss';
 
-const TodoList = ({ todos, onDeleteTodo, onToggleCompleted }) => (
+export const TodoList = ({ todos, onDeleteTodo, onToggleCompleted }) => (
   <ul className="TodoList">
     {todos.map(({ id, text, completed }) => (
       <li
@@ -30,4 +30,4 @@ const TodoList = ({ todos, onDeleteTodo, onToggleCompleted }) => (
   </ul>
 );
 
-export default TodoList;
+// export default TodoList;
