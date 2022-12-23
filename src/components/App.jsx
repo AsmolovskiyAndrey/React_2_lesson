@@ -131,7 +131,7 @@ class App extends Component {
     const { todos, filter, showModal, showClock } = this.state;
     const totalTodoCount = todos.length;
     const completedTodoCount = this.calculateCompletedTodos();
-    const visibleTodos = this.getVisibleTodos();
+    // const visibleTodos = this.getVisibleTodos();
 
     return (
       <>
