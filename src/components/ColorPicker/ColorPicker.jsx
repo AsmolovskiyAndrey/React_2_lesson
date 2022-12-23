@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './ColorPicker.css';
 import classNames from 'classnames';
 
-export class ColorPicker extends Component {
+export class ColorPicker extends PureComponent {
   state = {
     activeOptionsIdx: 0,
   };

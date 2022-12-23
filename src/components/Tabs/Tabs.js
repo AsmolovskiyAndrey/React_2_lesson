@@ -14,7 +14,7 @@ export default class Tabs extends PureComponent {
   };
 
   render() {
-    console.log(`Re-render @ ${Date.now()}`);
+    // console.log(`Re-render @ ${Date.now()}`);
 
     const { activeTabIdx } = this.state;
     const { items } = this.props;

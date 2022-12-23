@@ -13,6 +13,8 @@ import Modal from './Modal';
 import Clock from './Clock/Clock';
 import tabs from './tabs.json';
 import Tabs from './Tabs/Tabs';
+import IconButton from './IconButton/IconButton';
+import { ReactComponent as AddIcon } from '../icons/add.svg';
 
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
@@ -133,18 +135,20 @@ class App extends Component {
 
     return (
       <>
-        <Tabs items={tabs} />
+        <IconButton onClick={this.toggleClock} aria-label="Показать время">
+          <AddIcon width="20" height="20" fill="#fff" />
+          Часы
+        </IconButton>
 
-        <button type="button" onClick={this.toggleClock}>
+        <Tabs items={tabs} />
+        {/* <button type="button" onClick={this.toggleClock}>
           Показать / Скрыть часы
-        </button>
+        </button> */}
         <br />
         {showClock && <Clock />}
-
         <button type="button" onClick={this.toggleModal}>
           Открыть модалку
         </button>
-
         {showModal && (
           <Modal closeModal={this.toggleModal}>
             <h1>Привет это контент модалки как children</h1>
@@ -161,13 +165,11 @@ class App extends Component {
             </button>
           </Modal>
         )}
-
         <LoginForm />
         <TodoEditor onSubmit={this.addTodo} />
         <Filter value={filter} onChange={this.changeFilter} />
         <Form outOnSubmit={this.formSubmitHandler} />
         <h1>Состояние компонента</h1>
-
         <div>
           <p>Общее кол-во: {totalTodoCount}</p>
           <p>Кол-во выполненных: {completedTodoCount}</p>
