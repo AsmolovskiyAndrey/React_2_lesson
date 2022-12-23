@@ -10,6 +10,9 @@ import Filter from './Filter/Filter';
 import { LoginForm } from './LoginForm/LoginForm';
 import initialTodos from './Data/todos.json';
 import Modal from './Modal';
+import Clock from './Clock/Clock';
+import tabs from './tabs.json';
+import Tabs from './Tabs/Tabs';
 
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
@@ -25,6 +28,7 @@ class App extends Component {
     todos: initialTodos,
     filter: '',
     showModal: false,
+    showClock: false,
   };
 
   componentDidMount() {
@@ -115,14 +119,28 @@ class App extends Component {
     }));
   };
 
+  toggleClock = () => {
+    this.setState(({ showClock }) => ({
+      showClock: !showClock,
+    }));
+  };
+
   render() {
-    const { todos, filter, showModal } = this.state;
+    const { todos, filter, showModal, showClock } = this.state;
     const totalTodoCount = todos.length;
     const completedTodoCount = this.calculateCompletedTodos();
     const visibleTodos = this.getVisibleTodos();
 
     return (
       <>
+        <Tabs items={tabs} />
+
+        <button type="button" onClick={this.toggleClock}>
+          Показать / Скрыть часы
+        </button>
+        <br />
+        {showClock && <Clock />}
+
         <button type="button" onClick={this.toggleModal}>
           Открыть модалку
         </button>
